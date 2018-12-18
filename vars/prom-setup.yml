@@ -1,0 +1,23 @@
+---
+#prometheus
+openshift_prometheus_state: present
+openshift_prometheus_prometheus_storage_type: pvc
+openshift_prometheus_prometheus_pvc_name: prometheus
+openshift_prometheus_prometheus_pvc_size: 10G
+openshift_prometheus_node_exporter_install: false
+openshift_prometheus_namespace: "sandbox-metrics"
+
+#Grafana
+openshift_grafana_namespace: "sandbox-metrics"
+grafana_namespace: "sandbox-metrics"
+openshift_grafana_prometheus_namespace: "sandbox-metrics"
+openshift_grafana_prometheus_serviceaccount: prometheus
+openshift_grafana_serviceaccount_name: grafana
+openshift_grafana_node_exporter: false
+openshift_grafana_storage_type: pvc
+openshift_grafana_pvc_name: grafana
+openshift_grafana_image_prefix: "grafana/"
+openshift_grafana_image: grafana
+openshift_grafana_image_version: v5.3.4
+openshift_grafana_proxy_image_prefix: "openshift3/"
+openshift_grafana_proxy_image_version: v3.9.51

@@ -1,0 +1,107 @@
+---
+# set facts
+- include_tasks: facts.yaml
+
+# namespace
+- name: Add prometheus project
+  oc_project:
+    state: present
+    name: "{{ openshift_prometheus_namespace }}"
+    node_selector: ""
+    description: Prometheus
+
+- name: Make temp directory for node exporter template
+  command: mktemp -d /tmp/prometheus-ansible-XXXXXX
+  register: mktemp
+  changed_when: False
+
+- name: Copy admin client config
+  command: >
+    cp {{ openshift.common.config_base }}/master//admin.kubeconfig {{ mktemp.stdout }}/admin.kubeconfig
+  changed_when: false
+
+# serviceaccount
+- name: create kube-state-metrics serviceaccount
+  oc_serviceaccount:
+    state: present
+    name: "kube-state-metrics"
+    namespace: "{{ openshift_prometheus_namespace }}"
+  changed_when: no
+
+# add required permissions kube state metrics to scrape related things from the the cluster
+- name: Create router-metrics cluster role
+  oc_clusterrole:
+    state: present
+    name: kube-state-metrics
+    rules:
+    - apiGroups: [""]
+      resources:
+      - nodes
+      - pods
+      - services
+      - resourcequotas
+      - replicationcontrollers
+      - limitranges
+      - persistentvolumeclaims
+      verbs: ["list", "watch"]
+    - apiGroups: ["extensions"]
+      resources:
+      - daemonsets
+      - deployments
+      - replicasets
+      verbs: ["list", "watch"]
+    - apiGroups: ["apps"]
+      resources:
+      - statefulsets
+      verbs: ["list", "watch"]
+    - apiGroups: ["batch"]
+      resources:
+      - cronjobs
+      - jobs
+      verbs: ["list", "watch"]
+
+# create clusterrolebinding for kube-state-metrics serviceaccount
+- name: Set clusterrole permissions for kubestate metrics
+  oc_adm_policy_user:
+    state: present
+    namespace: "{{ openshift_prometheus_namespace }}"
+    resource_kind: cluster-role
+    resource_name: "{{ item }}"
+    user: "system:serviceaccount:{{ openshift_prometheus_namespace }}:kube-state-metrics"
+  with_items:
+  - kube-state-metrics
+
+- name: create services for kube-state-metrics
+  oc_service:
+    name: "kube-state-metrics"
+    namespace: "{{ openshift_prometheus_namespace }}"
+    labels:
+      k8s-app: kube-state-metrics
+    annotations:
+      prometheus.io/scrape: 'true'
+    ports:
+    - name: http-metrics
+      port: "8080"
+      targetPort: "http-metrics"
+      protocol: TCP
+    selector:
+      k8s-app: kube-state-metrics
+
+- name: Copy kube state metrics templates to temp directory
+  copy:
+    src: "{{ item }}"
+    dest: "{{ mktemp.stdout }}/{{ item }}"
+  with_items:
+    - "{{ kube_state_metrics_template_file }}"
+
+- name: Apply the kube state metrics template file
+  shell: >
+    {{ openshift_client_binary }} apply -f "{{ mktemp.stdout }}/{{ kube_state_metrics_template_file }}"
+    --config={{ mktemp.stdout }}/admin.kubeconfig
+    -n "{{ openshift_prometheus_namespace }}"
+
+- name: Remove temp directory
+  file:
+    state: absent
+    name: "{{ mktemp.stdout }}"
+  changed_when: False

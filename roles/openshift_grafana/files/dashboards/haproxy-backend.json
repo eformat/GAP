@@ -1,0 +1,2637 @@
+{
+"dashboard":{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": 364,
+  "graphTooltip": 1,
+  "id": null,
+  "iteration": 1544517113781,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 19,
+      "panels": [],
+      "repeat": null,
+      "title": "Backend Responses",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 15,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(haproxy_backend_http_responses_total{backend=~\"$backend\", code=~\"$code\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}[$interval])",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ backend }}/{{route}}/{{ code }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 60
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "HTTP Responses",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 8
+      },
+      "id": 16,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(haproxy_backend_redispatch_warnings_total{backend=~\"$backend\", alias=\"$alias\"}[$interval])",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "{{ backend }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 300
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Redispach Warnings",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 8
+      },
+      "id": 17,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(haproxy_backend_response_errors_total{backend=~\"$backend\", instance=\"$alias\",namespace=~\"$namespace\", route=~\"$route\"}[$interval])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ backend }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Response Errors",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 8
+      },
+      "id": 18,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(haproxy_backend_retry_warnings_total{backend=~\"$backend\", instance=\"$alias\"}[$interval])",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ backend }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Retry Wranings",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 20,
+      "panels": [],
+      "repeat": null,
+      "title": "Throughput",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 1,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(haproxy_backend_bytes_in_total{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}[$interval])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backend_",
+          "refId": "A",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Bytes IN",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 5,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(haproxy_backend_bytes_out_total{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}[$interval])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backend_",
+          "refId": "B",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Bytes OUT",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 21,
+      "panels": [],
+      "repeat": null,
+      "title": "Connections",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 4,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "^ERRORS.*$",
+          "fill": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(haproxy_backend_connections_total{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}[$interval])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backe",
+          "refId": "A",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "New Connections Rate",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 6,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "^ERRORS.*$",
+          "fill": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(haproxy_backend_connection_errors_total{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}[$interval])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backe",
+          "refId": "B",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Connection Errors Rate",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 22,
+      "panels": [],
+      "repeat": null,
+      "title": "Queues",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "id": 7,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "haproxy_backend_current_queue{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Current Queue Size",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "id": 8,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "haproxy_backend_max_queue{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 120
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Max Queue Size",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 39
+      },
+      "id": 23,
+      "panels": [],
+      "repeat": null,
+      "title": "Sessions",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 40
+      },
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "haproxy_backend_current_sessions{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 15
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Active Sessions",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 40
+      },
+      "id": 11,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "haproxy_backend_current_session_rate{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 15
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "New Session Rate",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 47
+      },
+      "id": 12,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "haproxy_backend_max_sessions{backend=~\"$backend\", instance=\"$alias\", namespace=~\"$namespace\", route=~\"$route\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ route }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 15
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Max Active Sessions",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 47
+      },
+      "id": 13,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "haproxy_backend_max_session_rate{backend=~\"$backend\", instance=\"$alias\",namespace=~\"$namespace\", route=~\"$route\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{namespace}}/{{ route }}",
+          "metric": "haproxy_backend_current_queue",
+          "refId": "A",
+          "step": 30
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Max Session Rate",
+      "tooltip": {
+        "msResolution": true,
+        "shared": true,
+        "sort": 2,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "15m",
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [
+    "haproxy",
+    "backend"
+  ],
+  "templating": {
+    "list": [
+      {
+        "auto": true,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "text": "5m",
+          "value": "5m"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Interval",
+        "multi": false,
+        "name": "interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "auto",
+            "value": "$__auto_interval_interval"
+          },
+          {
+            "selected": false,
+            "text": "1s",
+            "value": "1s"
+          },
+          {
+            "selected": false,
+            "text": "5s",
+            "value": "5s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": true,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          }
+        ],
+        "query": "1s,5s,1m,5m,1h,6h,1d",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "10.230.132.248:9101",
+          "value": "10.230.132.248:9101"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Load Balancer",
+        "multi": false,
+        "name": "alias",
+        "options": [],
+        "query": "label_values(haproxy_up, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Backend",
+        "multi": true,
+        "name": "backend",
+        "options": [],
+        "query": "label_values(haproxy_backend_bytes_in_total{instance=\"$alias\"}, backend)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "tags": [],
+          "text": "openshift-infra",
+          "value": [
+            "openshift-infra"
+          ]
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "namespace",
+        "multi": true,
+        "name": "namespace",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "apic-demo",
+            "value": "apic-demo"
+          },
+          {
+            "selected": false,
+            "text": "db-maintenance",
+            "value": "db-maintenance"
+          },
+          {
+            "selected": false,
+            "text": "elastic-poc-sandbox",
+            "value": "elastic-poc-sandbox"
+          },
+          {
+            "selected": false,
+            "text": "integration-apimgt",
+            "value": "integration-apimgt"
+          },
+          {
+            "selected": false,
+            "text": "integration-dummyapp",
+            "value": "integration-dummyapp"
+          },
+          {
+            "selected": false,
+            "text": "integration-filiptest2",
+            "value": "integration-filiptest2"
+          },
+          {
+            "selected": false,
+            "text": "integration-icow-app",
+            "value": "integration-icow-app"
+          },
+          {
+            "selected": false,
+            "text": "integration-self-service",
+            "value": "integration-self-service"
+          },
+          {
+            "selected": false,
+            "text": "integration-slah",
+            "value": "integration-slah"
+          },
+          {
+            "selected": false,
+            "text": "integration-tax-invoicing",
+            "value": "integration-tax-invoicing"
+          },
+          {
+            "selected": false,
+            "text": "ocp-maintainence",
+            "value": "ocp-maintainence"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-selling-api",
+            "value": "ocp-pipelines-selling-api"
+          },
+          {
+            "selected": false,
+            "text": "prod-jenkins-build",
+            "value": "prod-jenkins-build"
+          },
+          {
+            "selected": false,
+            "text": "psd-supplier-services",
+            "value": "psd-supplier-services"
+          },
+          {
+            "selected": false,
+            "text": "ptag-pipeline-demo",
+            "value": "ptag-pipeline-demo"
+          },
+          {
+            "selected": false,
+            "text": "qa-isubscribe",
+            "value": "qa-isubscribe"
+          },
+          {
+            "selected": false,
+            "text": "qa-self-service",
+            "value": "qa-self-service"
+          },
+          {
+            "selected": false,
+            "text": "quay-enterprise",
+            "value": "quay-enterprise"
+          },
+          {
+            "selected": false,
+            "text": "sams-lab",
+            "value": "sams-lab"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-apimgt",
+            "value": "sandbox-apimgt"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-b2b",
+            "value": "sandbox-b2b"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-country-range",
+            "value": "sandbox-country-range"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-dpop",
+            "value": "sandbox-dpop"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-dpop-label",
+            "value": "sandbox-dpop-label"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-eft-utility",
+            "value": "sandbox-eft-utility"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-filiptest",
+            "value": "sandbox-filiptest"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-icow-app",
+            "value": "sandbox-icow-app"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-iktapps",
+            "value": "sandbox-iktapps"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-isell-dev",
+            "value": "sandbox-isell-dev"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-isi-edi",
+            "value": "sandbox-isi-edi"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-isubscribe",
+            "value": "sandbox-isubscribe"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-itf",
+            "value": "sandbox-itf"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-mhs",
+            "value": "sandbox-mhs"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-opsec",
+            "value": "sandbox-opsec"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-promapp",
+            "value": "sandbox-promapp"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-ptag",
+            "value": "sandbox-ptag"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-sams",
+            "value": "sandbox-sams"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-self-service",
+            "value": "sandbox-self-service"
+          },
+          {
+            "selected": false,
+            "text": "integration-irmw",
+            "value": "integration-irmw"
+          },
+          {
+            "selected": false,
+            "text": "logging",
+            "value": "logging"
+          },
+          {
+            "selected": false,
+            "text": "openshift-ansible-service-broker",
+            "value": "openshift-ansible-service-broker"
+          },
+          {
+            "selected": false,
+            "text": "openshift-grafana",
+            "value": "openshift-grafana"
+          },
+          {
+            "selected": true,
+            "text": "openshift-infra",
+            "value": "openshift-infra"
+          },
+          {
+            "selected": false,
+            "text": "openshift-metrics",
+            "value": "openshift-metrics"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-dummyapp",
+            "value": "sandbox-dummyapp"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-irmw",
+            "value": "sandbox-irmw"
+          },
+          {
+            "selected": false,
+            "text": "cloud-onprem",
+            "value": "cloud-onprem"
+          },
+          {
+            "selected": false,
+            "text": "iitp-maintenance",
+            "value": "iitp-maintenance"
+          },
+          {
+            "selected": false,
+            "text": "infra",
+            "value": "infra"
+          },
+          {
+            "selected": false,
+            "text": "integration-aahp-idesk",
+            "value": "integration-aahp-idesk"
+          },
+          {
+            "selected": false,
+            "text": "integration-cn-address-lookup",
+            "value": "integration-cn-address-lookup"
+          },
+          {
+            "selected": false,
+            "text": "integration-cn-anti-tamper",
+            "value": "integration-cn-anti-tamper"
+          },
+          {
+            "selected": false,
+            "text": "integration-container-inspection",
+            "value": "integration-container-inspection"
+          },
+          {
+            "selected": false,
+            "text": "integration-country-range",
+            "value": "integration-country-range"
+          },
+          {
+            "selected": false,
+            "text": "integration-dpop-label",
+            "value": "integration-dpop-label"
+          },
+          {
+            "selected": false,
+            "text": "integration-eft-utility",
+            "value": "integration-eft-utility"
+          },
+          {
+            "selected": false,
+            "text": "integration-filiptest",
+            "value": "integration-filiptest"
+          },
+          {
+            "selected": false,
+            "text": "integration-hcl-lab",
+            "value": "integration-hcl-lab"
+          },
+          {
+            "selected": false,
+            "text": "integration-iitp",
+            "value": "integration-iitp"
+          },
+          {
+            "selected": false,
+            "text": "integration-ingka-macoffice",
+            "value": "integration-ingka-macoffice"
+          },
+          {
+            "selected": false,
+            "text": "integration-inter-macoffice",
+            "value": "integration-inter-macoffice"
+          },
+          {
+            "selected": false,
+            "text": "integration-isdp",
+            "value": "integration-isdp"
+          },
+          {
+            "selected": false,
+            "text": "integration-isell",
+            "value": "integration-isell"
+          },
+          {
+            "selected": false,
+            "text": "integration-itf",
+            "value": "integration-itf"
+          },
+          {
+            "selected": false,
+            "text": "integration-mobile-print",
+            "value": "integration-mobile-print"
+          },
+          {
+            "selected": false,
+            "text": "integration-nslb",
+            "value": "integration-nslb"
+          },
+          {
+            "selected": false,
+            "text": "integration-opsec",
+            "value": "integration-opsec"
+          },
+          {
+            "selected": false,
+            "text": "integration-pi-api",
+            "value": "integration-pi-api"
+          },
+          {
+            "selected": false,
+            "text": "integration-ptag",
+            "value": "integration-ptag"
+          },
+          {
+            "selected": false,
+            "text": "integration-retail-api",
+            "value": "integration-retail-api"
+          },
+          {
+            "selected": false,
+            "text": "integration-rix",
+            "value": "integration-rix"
+          },
+          {
+            "selected": false,
+            "text": "integration-sams",
+            "value": "integration-sams"
+          },
+          {
+            "selected": false,
+            "text": "integration-selling-api",
+            "value": "integration-selling-api"
+          },
+          {
+            "selected": false,
+            "text": "integration-semos-dt-to-prod-1",
+            "value": "integration-semos-dt-to-prod-1"
+          },
+          {
+            "selected": false,
+            "text": "integration-testproj",
+            "value": "integration-testproj"
+          },
+          {
+            "selected": false,
+            "text": "integration-tim",
+            "value": "integration-tim"
+          },
+          {
+            "selected": false,
+            "text": "jupyterhub",
+            "value": "jupyterhub"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-aahp-idesk",
+            "value": "ocp-pipelines-aahp-idesk"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-apimgt",
+            "value": "ocp-pipelines-apimgt"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-b2b",
+            "value": "ocp-pipelines-b2b"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-bjorntest",
+            "value": "ocp-pipelines-bjorntest"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-cn-address-lookup",
+            "value": "ocp-pipelines-cn-address-lookup"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-cn-anti-tamper",
+            "value": "ocp-pipelines-cn-anti-tamper"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-container-inspection",
+            "value": "ocp-pipelines-container-inspection"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-country-range",
+            "value": "ocp-pipelines-country-range"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-crip",
+            "value": "ocp-pipelines-crip"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-demo",
+            "value": "ocp-pipelines-demo"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-dpop",
+            "value": "ocp-pipelines-dpop"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-dpop-intsvc",
+            "value": "ocp-pipelines-dpop-intsvc"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-dpop-label",
+            "value": "ocp-pipelines-dpop-label"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-dpop-po",
+            "value": "ocp-pipelines-dpop-po"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-dummyapp",
+            "value": "ocp-pipelines-dummyapp"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-dynamic-ip-api",
+            "value": "ocp-pipelines-dynamic-ip-api"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-eft-utility",
+            "value": "ocp-pipelines-eft-utility"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-filiptest",
+            "value": "ocp-pipelines-filiptest"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-filiptest2",
+            "value": "ocp-pipelines-filiptest2"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-hcl-lab",
+            "value": "ocp-pipelines-hcl-lab"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-hcllab-ansible",
+            "value": "ocp-pipelines-hcllab-ansible"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-icow-app",
+            "value": "ocp-pipelines-icow-app"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-iitp",
+            "value": "ocp-pipelines-iitp"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-iktapps",
+            "value": "ocp-pipelines-iktapps"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-incubation",
+            "value": "ocp-pipelines-incubation"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-ingka-macoffice",
+            "value": "ocp-pipelines-ingka-macoffice"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-inter-macoffice",
+            "value": "ocp-pipelines-inter-macoffice"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-iopg",
+            "value": "ocp-pipelines-iopg"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-irmw",
+            "value": "ocp-pipelines-irmw"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-isdp",
+            "value": "ocp-pipelines-isdp"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-isell",
+            "value": "ocp-pipelines-isell"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-isell-dev",
+            "value": "ocp-pipelines-isell-dev"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-isi-edi",
+            "value": "ocp-pipelines-isi-edi"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-isubscribe",
+            "value": "ocp-pipelines-isubscribe"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-itf",
+            "value": "ocp-pipelines-itf"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-jenkins-build",
+            "value": "ocp-pipelines-jenkins-build"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-margud-lab",
+            "value": "ocp-pipelines-margud-lab"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-mhs",
+            "value": "ocp-pipelines-mhs"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-migw",
+            "value": "ocp-pipelines-migw"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-mobile-print",
+            "value": "ocp-pipelines-mobile-print"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-nslb",
+            "value": "ocp-pipelines-nslb"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-om",
+            "value": "ocp-pipelines-om"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-opamminer",
+            "value": "ocp-pipelines-opamminer"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-opsec",
+            "value": "ocp-pipelines-opsec"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-ow-shopping",
+            "value": "ocp-pipelines-ow-shopping"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-pace",
+            "value": "ocp-pipelines-pace"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-pi-api",
+            "value": "ocp-pipelines-pi-api"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-ptag",
+            "value": "ocp-pipelines-ptag"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-ptag-2",
+            "value": "ocp-pipelines-ptag-2"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-retail-api",
+            "value": "ocp-pipelines-retail-api"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-rix",
+            "value": "ocp-pipelines-rix"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-rodmon",
+            "value": "ocp-pipelines-rodmon"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-rpim",
+            "value": "ocp-pipelines-rpim"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-sams",
+            "value": "ocp-pipelines-sams"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-self-service",
+            "value": "ocp-pipelines-self-service"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-semos-dt-to-prod-1",
+            "value": "ocp-pipelines-semos-dt-to-prod-1"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-semos7-finaltest-25",
+            "value": "ocp-pipelines-semos7-finaltest-25"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-slah",
+            "value": "ocp-pipelines-slah"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-stock-notification",
+            "value": "ocp-pipelines-stock-notification"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-tax-invoicing",
+            "value": "ocp-pipelines-tax-invoicing"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-tc-todo",
+            "value": "ocp-pipelines-tc-todo"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-tcs-f1",
+            "value": "ocp-pipelines-tcs-f1"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-testproj",
+            "value": "ocp-pipelines-testproj"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-tim",
+            "value": "ocp-pipelines-tim"
+          },
+          {
+            "selected": false,
+            "text": "ocp-pipelines-to-compete",
+            "value": "ocp-pipelines-to-compete"
+          },
+          {
+            "selected": false,
+            "text": "openshift-web-console",
+            "value": "openshift-web-console"
+          },
+          {
+            "selected": false,
+            "text": "prod-filiptest",
+            "value": "prod-filiptest"
+          },
+          {
+            "selected": false,
+            "text": "qa-aahp-idesk",
+            "value": "qa-aahp-idesk"
+          },
+          {
+            "selected": false,
+            "text": "qa-cn-address-lookup",
+            "value": "qa-cn-address-lookup"
+          },
+          {
+            "selected": false,
+            "text": "qa-cn-anti-tamper",
+            "value": "qa-cn-anti-tamper"
+          },
+          {
+            "selected": false,
+            "text": "qa-container-inspection",
+            "value": "qa-container-inspection"
+          },
+          {
+            "selected": false,
+            "text": "qa-country-range",
+            "value": "qa-country-range"
+          },
+          {
+            "selected": false,
+            "text": "qa-dpop-label",
+            "value": "qa-dpop-label"
+          },
+          {
+            "selected": false,
+            "text": "qa-dummyapp",
+            "value": "qa-dummyapp"
+          },
+          {
+            "selected": false,
+            "text": "qa-eft-utility",
+            "value": "qa-eft-utility"
+          },
+          {
+            "selected": false,
+            "text": "qa-filiptest",
+            "value": "qa-filiptest"
+          },
+          {
+            "selected": false,
+            "text": "qa-filiptest2",
+            "value": "qa-filiptest2"
+          },
+          {
+            "selected": false,
+            "text": "qa-hcl-lab",
+            "value": "qa-hcl-lab"
+          },
+          {
+            "selected": false,
+            "text": "qa-icow-app",
+            "value": "qa-icow-app"
+          },
+          {
+            "selected": false,
+            "text": "qa-ingka-macoffice",
+            "value": "qa-ingka-macoffice"
+          },
+          {
+            "selected": false,
+            "text": "qa-inter-macoffice",
+            "value": "qa-inter-macoffice"
+          },
+          {
+            "selected": false,
+            "text": "qa-irmw",
+            "value": "qa-irmw"
+          },
+          {
+            "selected": false,
+            "text": "qa-isdp",
+            "value": "qa-isdp"
+          },
+          {
+            "selected": false,
+            "text": "qa-isell",
+            "value": "qa-isell"
+          },
+          {
+            "selected": false,
+            "text": "qa-itf",
+            "value": "qa-itf"
+          },
+          {
+            "selected": false,
+            "text": "qa-mobile-print",
+            "value": "qa-mobile-print"
+          },
+          {
+            "selected": false,
+            "text": "qa-nslb",
+            "value": "qa-nslb"
+          },
+          {
+            "selected": false,
+            "text": "qa-pi-api",
+            "value": "qa-pi-api"
+          },
+          {
+            "selected": false,
+            "text": "qa-retail-api",
+            "value": "qa-retail-api"
+          },
+          {
+            "selected": false,
+            "text": "qa-rix",
+            "value": "qa-rix"
+          },
+          {
+            "selected": false,
+            "text": "qa-sams",
+            "value": "qa-sams"
+          },
+          {
+            "selected": false,
+            "text": "qa-selling-api",
+            "value": "qa-selling-api"
+          },
+          {
+            "selected": false,
+            "text": "qa-semos-dt-to-prod-1",
+            "value": "qa-semos-dt-to-prod-1"
+          },
+          {
+            "selected": false,
+            "text": "qa-slah",
+            "value": "qa-slah"
+          },
+          {
+            "selected": false,
+            "text": "qa-testproj",
+            "value": "qa-testproj"
+          },
+          {
+            "selected": false,
+            "text": "qa-tim",
+            "value": "qa-tim"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-bjorntest",
+            "value": "sandbox-bjorntest"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-cn-address-lookup",
+            "value": "sandbox-cn-address-lookup"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-cn-anti-tamper",
+            "value": "sandbox-cn-anti-tamper"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-demo",
+            "value": "sandbox-demo"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-dpop-intsvc",
+            "value": "sandbox-dpop-intsvc"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-dpop-po",
+            "value": "sandbox-dpop-po"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-filiptest2",
+            "value": "sandbox-filiptest2"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-hcl-lab",
+            "value": "sandbox-hcl-lab"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-incubation",
+            "value": "sandbox-incubation"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-isdp",
+            "value": "sandbox-isdp"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-isell",
+            "value": "sandbox-isell"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-margud-lab",
+            "value": "sandbox-margud-lab"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-migw",
+            "value": "sandbox-migw"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-mobile-print",
+            "value": "sandbox-mobile-print"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-nslb",
+            "value": "sandbox-nslb"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-om",
+            "value": "sandbox-om"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-opamminer",
+            "value": "sandbox-opamminer"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-ow-shopping",
+            "value": "sandbox-ow-shopping"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-pace",
+            "value": "sandbox-pace"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-pi-api",
+            "value": "sandbox-pi-api"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-retail-api",
+            "value": "sandbox-retail-api"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-rix",
+            "value": "sandbox-rix"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-rodmon",
+            "value": "sandbox-rodmon"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-rpim",
+            "value": "sandbox-rpim"
+          },
+          {
+            "selected": false,
+            "text": "sandbox-selling-api",
+            "value": "sandbox-selling-api"
+          },
+          {
+            "selected": false,
+            "text": "default",
+            "value": "default"
+          },
+          {
+            "selected": false,
+            "text": "kube-service-catalog",
+            "value": "kube-service-catalog"
+          }
+        ],
+        "query": "label_values(haproxy_backend_bytes_in_total{instance=~\"$alias\", backend=~\"$backend\"}, namespace)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "route",
+        "multi": true,
+        "name": "route",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "hawkular-metrics",
+            "value": "hawkular-metrics"
+          }
+        ],
+        "query": "label_values(haproxy_backend_bytes_in_total{instance=~\"$alias\", backend=~\"$backend\",namespace=~\"$namespace\"}, route)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": ".*",
+        "current": {},
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "HTTP Code",
+        "multi": true,
+        "name": "code",
+        "options": [],
+        "query": "label_values(haproxy_backend_http_responses_total{instance=~\"$alias\", backend=~\"$backend\", namespace=~\"$namespace\"}, code)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "HAproxy Backend | HAproxy",
+  "version": 1
+ }
+}

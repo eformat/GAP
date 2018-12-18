@@ -1,0 +1,38 @@
+- name: Regex set data source name for "{{ dashboardfile }}"
+  replace:
+    path: "{{ mktemp.stdout }}/{{ dashboardfile }}"
+    regexp: '{{ item.regexp }}'
+    replace: '{{ item.replace }}'
+    backup: yes
+  with_items:
+  - regexp: '##DS_PR##'
+    replace: '{{ grafana_datasource_name }}'
+  - regexp: 'Xs'
+    replace: '{{ grafana_graph_granularity }}'
+
+
+- set_fact:
+    dashboard: "{{ mktemp.stdout }}/{{ dashboardfile }}"
+
+- name: Slurp dashboard file "{{ dashboardfile }}"
+  slurp:
+    src: "{{ dashboard }}"
+  register: slurpfile
+
+- set_fact:
+    dashboard_data: '{{ slurpfile["content"] | b64decode | from_json | combine({ "dashboard": { "overwrite": true } }, recursive=True) | to_json }}'
+
+- name: Add openshift dashboard "{{ dashboardfile }}"
+  uri:
+    url: "{{ grafana_route }}/api/dashboards/db"
+    user: "{{ grafana_sa_token.stdout }}"
+    force_basic_auth: true
+    method: POST
+    body: '{{ dashboard_data }}'
+    body_format: json
+    status_code:
+    - 200
+    - 412
+    headers:
+      Content-Type: "Content-Type: application/json"
+  register: add_ds 

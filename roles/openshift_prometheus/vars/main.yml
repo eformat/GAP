@@ -1,0 +1,3 @@
+---
+__node_exporter_template_file: "node-exporter-template.yaml"
+kube_state_metrics_template_file: "kube-state-metrics.yaml"
