@@ -36,6 +36,9 @@ l_openshift_grafana_dashboards:
   - openShift-capacity-dashboard.json
   - node-overcommittment.json
   - prometheus-dash.json
+  - kubernetes_control_Status.json
+  - pod_resource_usage.json
+  - project_resource_req_usage.json
 
 # container resources
 openshift_grafana_cpu_limit: null
